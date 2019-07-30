@@ -2,31 +2,34 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
+const path = require("path");
 
 const users = require("./routes/apis/users");
 const profile = require("./routes/apis/profile");
 const posts = require("./routes/apis/posts");
-const app = express();
-// DB config
-const db = require("./config/keys").mongoURI;
 
-// bodyParser Middleware
+const app = express();
+
+// Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// MongoDB connections
+// DB Config
+const db = require("./config/keys").mongoURI;
+
+// Connect to MongoDB
 mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB connected"))
+  .connect(db, { useNewUrlParser: true }) // Let us remove that nasty deprecation warrning :)
+  .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// Passport Middleware
+// Passport middleware
 app.use(passport.initialize());
 
-//Passport Config
+// Passport Config
 require("./config/passport")(passport);
 
-// use Routes
+// Use Routes
 app.use("/apis/users", users);
 app.use("/apis/profile", profile);
 app.use("/apis/posts", posts);
