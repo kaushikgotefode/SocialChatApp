@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Posts from "./components/post/posts";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <div>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/posts" component={Posts} />
         </div>
         <Footer />
       </div>
