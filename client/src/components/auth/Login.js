@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import classnames from 'classnames';
 export class Login extends Component {
   constructor() {
     super();
@@ -12,15 +14,26 @@ export class Login extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  onFocus(e) {
+    const field = e.target.name;
+    const { errors } = this.state;
+    if (Object.keys(this.state.errors).length > 0) {
+      errors[field] = '';
+      this.setState({
+        errors
+      })
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
-    const newUser = {
+    const user = {
       email: this.state.email,
       password: this.state.password
     };
-    console.log(newUser);
+    axios.post('/apis/users/login', user).then(res => console.log(res)).catch(err => this.setState({ errors: err.response.data }))
   }
   render() {
+    const { errors } = this.state;
     return (
       <div className="signup-form">
         <form className="form-horizontal" onSubmit={e => this.onSubmit(e)}>
@@ -32,11 +45,15 @@ export class Login extends Component {
             <div className="col-xs-8">
               <input
                 type="email"
-                className="form-control"
+                className={classnames('form-control', { 'is-invalid': errors.email })}
                 name="email"
                 value={this.state.email}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
+              {
+                errors.email && (<div className="invalid-feedback">{errors.email}</div>)
+              }
             </div>
           </div>
           <div className="form-group">
@@ -44,11 +61,15 @@ export class Login extends Component {
             <div className="col-xs-8">
               <input
                 type="password"
-                className="form-control"
+                className={classnames('form-control', { 'is-invalid': errors.password })}
                 name="password"
                 value={this.state.password}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
+              {
+                errors.password && (<div className="invalid-feedback">{errors.password}</div>)
+              }
             </div>
           </div>
           <div className="form-group">

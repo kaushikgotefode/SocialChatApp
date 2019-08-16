@@ -16,6 +16,16 @@ export class Register extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  onFocus(e) {
+    const field = e.target.name;
+    const { errors } = this.state;
+    if (Object.keys(this.state.errors).length > 0) {
+      errors[field] = '';
+      this.setState({
+        errors
+      })
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
     const newUser = {
@@ -52,6 +62,7 @@ export class Register extends Component {
                 name="name"
                 value={this.state.name}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
               {errors.name && (
                 <div className="invalid-feedback">{errors.name}</div>
@@ -69,6 +80,7 @@ export class Register extends Component {
                 name="email"
                 value={this.state.email}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
               {errors.email && (
                 <div className="invalid-feedback">{errors.email}</div>
@@ -86,6 +98,7 @@ export class Register extends Component {
                 name="password"
                 value={this.state.password}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
               {errors.password && (
                 <div className="invalid-feedback">{errors.password}</div>
@@ -103,6 +116,7 @@ export class Register extends Component {
                 name="password2"
                 value={this.state.password2}
                 onChange={e => this.onChange(e)}
+                onFocus={e => this.onFocus(e)}
               />
               {errors.password2 && (
                 <div className="invalid-feedback">{errors.password2}</div>
