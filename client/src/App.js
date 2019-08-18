@@ -8,7 +8,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Posts from "./components/post/Posts";
+import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <div>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/posts" component={Posts} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </div>
           <Footer />
         </div>

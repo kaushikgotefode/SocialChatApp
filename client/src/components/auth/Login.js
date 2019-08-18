@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import classnames from "classnames";
 import { loginUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import TextFieldGroup from "../common/TextFieldGroup";
 export class Login extends Component {
   constructor() {
     super();
@@ -52,42 +52,24 @@ export class Login extends Component {
           <div className="col-xs-8 col-xs-offset-4">
             <h2>Login</h2>
           </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Email Address</label>
-            <div className="col-xs-8">
-              <input
-                type="email"
-                className={classnames("form-control", {
-                  "is-invalid": errors.email
-                })}
-                name="email"
-                value={this.state.email}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
-              )}
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Password</label>
-            <div className="col-xs-8">
-              <input
-                type="password"
-                className={classnames("form-control", {
-                  "is-invalid": errors.password
-                })}
-                name="password"
-                value={this.state.password}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.password && (
-                <div className="invalid-feedback">{errors.password}</div>
-              )}
-            </div>
-          </div>
+          <TextFieldGroup
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            error={errors.email}
+            value={this.state.email}
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
+          <TextFieldGroup
+            name="password"
+            type="password"
+            placeholder="Password"
+            error={errors.password}
+            value={this.state.password}
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
           <div className="form-group">
             <div className="col-xs-8 col-xs-offset-4">
               <button type="submit" className="btn btn-primary btn-lg">

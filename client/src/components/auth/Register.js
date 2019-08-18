@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import classnames from "classnames";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
+import TextFieldGroup from "../common/TextFieldGroup";
 export class Register extends Component {
   constructor() {
     super();
@@ -58,78 +58,42 @@ export class Register extends Component {
           <div className="col-xs-8 col-xs-offset-4">
             <h2>Sign Up</h2>
           </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Name</label>
-            <div className="col-xs-8">
-              <input
-                type="text"
-                className={classnames("form-control", {
-                  "is-invalid": errors.name
-                })}
-                name="name"
-                value={this.state.name}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.name && (
-                <div className="invalid-feedback">{errors.name}</div>
-              )}
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Email Address</label>
-            <div className="col-xs-8">
-              <input
-                type="email"
-                className={classnames("form-control", {
-                  "is-invalid": errors.email
-                })}
-                name="email"
-                value={this.state.email}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.email && (
-                <div className="invalid-feedback">{errors.email}</div>
-              )}
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Password</label>
-            <div className="col-xs-8">
-              <input
-                type="password"
-                className={classnames("form-control", {
-                  "is-invalid": errors.password
-                })}
-                name="password"
-                value={this.state.password}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.password && (
-                <div className="invalid-feedback">{errors.password}</div>
-              )}
-            </div>
-          </div>
-          <div className="form-group">
-            <label className="control-label col-xs-4">Confirm Password</label>
-            <div className="col-xs-8">
-              <input
-                type="password"
-                className={classnames("form-control", {
-                  "is-invalid": errors.password2
-                })}
-                name="password2"
-                value={this.state.password2}
-                onChange={e => this.onChange(e)}
-                onFocus={e => this.onFocus(e)}
-              />
-              {errors.password2 && (
-                <div className="invalid-feedback">{errors.password2}</div>
-              )}
-            </div>
-          </div>
+          <TextFieldGroup
+            name="name"
+            placeholder="Name"
+            error={errors.name}
+            value={this.state.name}
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
+          <TextFieldGroup
+            name="email"
+            type="email"
+            placeholder="Email address"
+            error={errors.email}
+            value={this.state.email}
+            info="This site used Gravatar, so for profile image use Gravatar email."
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
+          <TextFieldGroup
+            name="password"
+            type="password"
+            placeholder="Password"
+            error={errors.password}
+            value={this.state.password}
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
+          <TextFieldGroup
+            name="password2"
+            type="password"
+            placeholder="Confirm password"
+            error={errors.password2}
+            value={this.state.password2}
+            onChange={e => this.onChange(e)}
+            onFocus={e => this.onFocus(e)}
+          />
           <div className="form-group">
             <div className="col-xs-8 col-xs-offset-4">
               <p>

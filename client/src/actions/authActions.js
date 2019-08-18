@@ -3,6 +3,7 @@ import setRequestToken from "./../utils/setRequestToken";
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
 import jwt_decode from "jwt-decode";
+import { clearCurrentProfile } from "./profileActions";
 
 // register user
 export const registerUser = (userData, history) => dispatch => {
@@ -34,7 +35,7 @@ export const loginUser = (userData, history) => dispatch => {
       const decodedUser = jwt_decode(token);
 
       dispatch(setCurrentUser(decodedUser));
-      history.push("/posts");
+      history.push("/dashboard");
     })
     .catch(err =>
       dispatch({
@@ -62,5 +63,6 @@ export const logoutUser = history => dispatch => {
     type: SET_CURRENT_USER,
     payload: {}
   });
+  dispatch(clearCurrentProfile());
   history.push("/login");
 };
