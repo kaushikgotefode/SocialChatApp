@@ -52,17 +52,15 @@ export const setCurrentUser = decodedUser => {
   };
 };
 
-export const logoutUser = history => dispatch => {
+export const logoutUser = () => dispatch => {
   //remove token from localStorage
-  localStorage.removeItem("jwt-token");
+  localStorage.removeItem("jwtToken");
 
   //remove auth Header for further API calls
   setRequestToken(false);
-
   dispatch({
     type: SET_CURRENT_USER,
     payload: {}
   });
   dispatch(clearCurrentProfile());
-  history.push("/login");
 };

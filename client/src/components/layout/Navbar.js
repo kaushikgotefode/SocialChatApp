@@ -9,8 +9,10 @@ import { clearCurrentProfile } from "./../../actions/profileActions";
 class Navbar extends Component {
   onLogoutClick() {
     this.props.clearCurrentProfile();
-    this.props.logoutUser(this.props.history);
+    this.props.logoutUser();
+    // window.location.href = "/login";
   }
+
   render() {
     const { isAuthenticate, user } = this.props.auth;
     const guestLinks = (
@@ -60,7 +62,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
+                <Link className="nav-link" to="/dashboard">
                   {" "}
                   Developers
                 </Link>
@@ -75,7 +77,7 @@ class Navbar extends Component {
 }
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object
 };
 const mapStateToProps = state => ({
   auth: state.auth
