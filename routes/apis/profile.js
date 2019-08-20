@@ -99,7 +99,7 @@ router.post(
 
     //Skills
     if (typeof req.body.skills !== "undefined")
-      profileObj.skills = req.body.skills.split(",");
+      profileObj.skills = req.body.skills.split(",").map(skill => skill.trim());
     //Social
     profileObj.social = {};
     if (req.body.youtube) profileObj.social.youtube = req.body.youtube;
