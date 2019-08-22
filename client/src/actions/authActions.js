@@ -58,6 +58,7 @@ export const logoutUser = () => dispatch => {
 
   //remove auth Header for further API calls
   setRequestToken(false);
+  window.location.pathname = "/";
   dispatch({
     type: SET_CURRENT_USER,
     payload: {}

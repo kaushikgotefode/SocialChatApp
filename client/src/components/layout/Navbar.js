@@ -45,7 +45,10 @@ class Navbar extends Component {
       </ul>
     );
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark" style={{height:'56px'}}>
+      <nav
+        className="navbar navbar-expand-sm navbar-dark bg-dark"
+        style={{ height: "56px" }}
+      >
         <div className="container">
           <Link className="navbar-brand" to="/">
             DevConnector

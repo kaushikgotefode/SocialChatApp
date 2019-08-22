@@ -1,10 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextFieldGroup from "./../common/TextFieldGroup";
 import TextAreaFieldGroup from "./../common/TextAreaFieldGroup";
 import SelectListGroup from "./../common/SelectListGroup";
 import { createProfile } from "./../../actions/profileActions";
+import InputGroup from "../common/InputGroup";
+import {
+  faFacebookF,
+  faInstagram,
+  faTwitter,
+  faLinkedin,
+  faYoutube
+} from "@fortawesome/free-brands-svg-icons";
 
 class CreateProfile extends Component {
   constructor(props) {
@@ -65,8 +73,52 @@ class CreateProfile extends Component {
     };
     this.props.createProfile(profile, this.props.history);
   }
+  expandSocialLinks(e) {
+    e.preventDefault();
+    this.setState({ displaySocialInputs: !this.state.displaySocialInputs });
+  }
   render() {
     const { errors } = this.state;
+    const socialInputs = (
+      <Fragment>
+        <InputGroup
+          name="facebook"
+          placeholder="Facebook"
+          value={this.state.facebook}
+          icon={faFacebookF}
+          onChange={e => this.onChange(e)}
+        />
+        <InputGroup
+          name="instagram"
+          placeholder="Instagram"
+          value={this.state.instagram}
+          icon={faInstagram}
+          onChange={e => this.onChange(e)}
+        />
+        <InputGroup
+          name="youtube"
+          placeholder="Youtube"
+          value={this.state.youtube}
+          icon={faYoutube}
+          onChange={e => this.onChange(e)}
+        />
+        <InputGroup
+          name="twitter"
+          placeholder="Twitter"
+          value={this.state.twitter}
+          icon={faTwitter}
+          onChange={e => this.onChange(e)}
+        />
+        <InputGroup
+          name="linkedIn"
+          placeholder="linkedIn"
+          value={this.state.linkedIn}
+          icon={faLinkedin}
+          onChange={e => this.onChange(e)}
+        />
+        }
+      </Fragment>
+    );
     return (
       <div className="create-profile py-4">
         <form className="form-horizontal" onSubmit={e => this.onSubmit(e)}>
@@ -126,7 +178,7 @@ class CreateProfile extends Component {
                   onChange={e => this.onChange(e)}
                 />
                 <TextFieldGroup
-                  name="githubUsername"
+                  name="gitHubUserName"
                   placeholder="Github Username"
                   info="If you want your latest github repos and a github links, please add github username"
                   value={this.state.gitHubUserName}
@@ -139,6 +191,17 @@ class CreateProfile extends Component {
                   value={this.state.bio}
                   onChange={e => this.onChange(e)}
                 />
+                <div className="form-group">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    onClick={e => this.expandSocialLinks(e)}
+                  >
+                    Social Links
+                  </button>
+                </div>
+                {this.state.displaySocialInputs ? socialInputs : ""}
+
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">
                     Create Profile
