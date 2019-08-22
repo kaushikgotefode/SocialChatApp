@@ -2,7 +2,7 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS
+  GET_ERRORS, GET_ALL_PROFILES
 } from "./types";
 import axios from "axios";
 
@@ -24,7 +24,25 @@ export const getCurrentProfile = () => dispatch => {
     });
 };
 
-export const createProfile = profile => dispatch => {
+export const getProfileList = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get("/apis/profile/all")
+    .then(res => {
+      dispatch({
+        type: GET_ALL_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ALL_PROFILES,
+        payload: []
+      });
+    });
+};
+
+export const createProfile = (profile,history) => dispatch => {
   dispatch(setProfileLoading());
   axios
     .post("/apis/profile", profile)
@@ -33,6 +51,7 @@ export const createProfile = profile => dispatch => {
         type: GET_PROFILE,
         payload: res.data
       });
+      history.push('/dashboard')
     })
     .catch(err => {
       dispatch({

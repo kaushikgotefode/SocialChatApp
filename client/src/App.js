@@ -21,6 +21,7 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateProfile from "./components/profile/CreateProfile";
+import Profiles from "./components/profile/Profiles";
 function App() {
   // Check for token
   if (localStorage.jwtToken) {
@@ -38,8 +39,8 @@ function App() {
       store.dispatch(logoutUser());
       // Clear current Profile
       store.dispatch(clearCurrentProfile());
-      // Redirect to login
-      window.location.href = "/login";
+      // Redirect to Landing
+      window.location.href = "/";
     }
   }
   return (
@@ -48,18 +49,17 @@ function App() {
         <div className="App">
           <Navbar />
           <Route exact path="/" component={Landing} />
-          <div>
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <PrivateRoute
-                exact
-                path="/create-profile"
-                component={CreateProfile}
-              />
-            </Switch>
-          </div>
+          <Route exact path="/profiles" component={Profiles} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/create-profile"
+              component={CreateProfile}
+            />
+          </Switch>
           <Footer />
         </div>
       </Router>

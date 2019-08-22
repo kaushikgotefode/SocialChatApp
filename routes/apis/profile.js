@@ -69,6 +69,7 @@ router.get(
         errors.profileNotFound = "User Profile not found for this user";
         res.status(404).json(errors);
       }
+      res.json(profile);
     });
   }
 );

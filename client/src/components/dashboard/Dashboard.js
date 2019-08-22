@@ -16,7 +16,26 @@ class Dashboard extends Component {
       dashboardContent = <Spinner />;
     } else {
       if (profile && Object.keys(profile).length > 0) {
-        dashboardContent = <div>Dashboard</div>;
+        dashboardContent = <div className="container">
+          <Link className="btn btn-secondary" to="/profiles">List of Developers</Link>
+          <center>
+            <img src={user.avatar} alt={user.name} name="aboutme" style={{width:'140px',height:'140px',border:'0px', borderRadius:'50%'}} />
+            <h3 className="media-heading">{user.name} <small>{profile.location}</small></h3>
+            <span><strong className="mr-2">Skills: </strong></span>
+            {
+              profile.skills.map((skill,id) => {
+                return <span className="badge badge-info px-1 mr-2" key={id}>{skill}</span>
+              })
+            }
+          </center>
+          <hr />
+          <center>
+            <p className="text-left"><strong>Bio: </strong><br />
+              {profile.bio}
+            </p>
+            <br />
+          </center>
+        </div>
       } else {
         dashboardContent = (
           <div className="container">

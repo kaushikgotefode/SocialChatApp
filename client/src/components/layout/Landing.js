@@ -31,6 +31,7 @@ export class Landing extends Component {
                 </p>
                 <hr />
                 {isAuthenticate ? authenticated : notAuthenticated}
+
               </div>
             </div>
           </div>
