@@ -48,18 +48,20 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/profiles" component={Profiles} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/login" component={Login} />
-          <Switch>
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute
-              exact
-              path="/create-profile"
-              component={CreateProfile}
-            />
-          </Switch>
+          <div className="view-container">
+            <Route exact path="/" component={Landing} />
+            <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
+            </Switch>
+          </div>
           <Footer />
         </div>
       </Router>

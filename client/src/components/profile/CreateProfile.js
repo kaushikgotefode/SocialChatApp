@@ -68,7 +68,7 @@ class CreateProfile extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="create-profile">
+      <div className="create-profile py-4">
         <form className="form-horizontal" onSubmit={e => this.onSubmit(e)}>
           <div className="container">
             <div className="row">

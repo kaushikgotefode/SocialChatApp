@@ -16,7 +16,7 @@ class Dashboard extends Component {
       dashboardContent = <Spinner />;
     } else {
       if (profile && Object.keys(profile).length > 0) {
-        dashboardContent = <div className="container">
+        dashboardContent = <div>
           <Link className="btn btn-secondary" to="/profiles">List of Developers</Link>
           <center>
             <img src={user.avatar} alt={user.name} name="aboutme" style={{width:'140px',height:'140px',border:'0px', borderRadius:'50%'}} />
@@ -24,7 +24,7 @@ class Dashboard extends Component {
             <span><strong className="mr-2">Skills: </strong></span>
             {
               profile.skills.map((skill,id) => {
-                return <span className="badge badge-info px-1 mr-2" key={id}>{skill}</span>
+                return <span className="text-capitalize badge badge-info px-1 mr-2" key={id}>{skill}</span>
               })
             }
           </center>
@@ -38,7 +38,7 @@ class Dashboard extends Component {
         </div>
       } else {
         dashboardContent = (
-          <div className="container">
+          <div>
             <p className="lead text-muted">Welcome {user.name}</p>
             <p className="text-muted">
               You have not setup profile, please add some info.
@@ -50,7 +50,7 @@ class Dashboard extends Component {
         );
       }
     }
-    return <div>{dashboardContent}</div>;
+    return <div className="container py-4">{dashboardContent}</div>;
   }
 }
 Dashboard.propTypes = {

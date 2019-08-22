@@ -45,7 +45,7 @@ class Navbar extends Component {
       </ul>
     );
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark" style={{height:'56px'}}>
         <div className="container">
           <Link className="navbar-brand" to="/">
             DevConnector
@@ -62,7 +62,7 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/dashboard">
+                <Link className="nav-link" to="/profiles">
                   {" "}
                   Developers
                 </Link>

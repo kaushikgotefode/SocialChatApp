@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { getProfileList } from "./../../actions/profileActions";
 import { PropTypes } from "prop-types";
 import Spinner from "../common/Spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons";
 class Profiles extends Component {
     componentDidMount() {
         this.props.getProfileList();
@@ -31,9 +33,9 @@ class Profiles extends Component {
                                                 <small><cite title={profile.location}>{profile.location} <i className="glyphicon glyphicon-map-marker">
                                                 </i></cite></small>
                                                 <p>
-                                                    <i className="glyphicon glyphicon-envelope"></i>{profile.location}
+                                                    <FontAwesomeIcon className="mr-2" icon={faEnvelope}/>{profile.location}
                                                     <br />
-                                                    <i className="glyphicon glyphicon-globe"></i><Link to={profile.website}>{profile.website}</Link>
+                                                    <FontAwesomeIcon className="mr-2" icon={faGlobe} /><Link to={profile.website}>{profile.website}</Link>
                                                     <br />
                                                 </p></div>
                                         </div>
@@ -45,7 +47,7 @@ class Profiles extends Component {
                 </div>
             } else {
                 profileListContent = (
-                    <div className="container">
+                    <div className="container py-4">
                         <p className="text-muted">
                             There are no Profile created, Create your own Profile.
                         </p>

@@ -1,3 +1,7 @@
+.view-container {
+  min-height: calc(100vh - 96px);
+}
+
 img {
   width: 100%;
 }
@@ -7,9 +11,8 @@ img {
   background: url('./img/landing_page.jpg') no-repeat;
   background-size: cover;
   background-position: center;
-  height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  min-height: calc(100vh - 96px);
+  /* margin-bottom: -50px; */
 }
 
 .landing-inner {
@@ -67,7 +70,8 @@ img {
   text-transform: uppercase;
 }
 
-#header #logo h1 a, #header #logo h1 a:hover {
+#header #logo h1 a,
+#header #logo h1 a:hover {
   color: #fff;
 }
 
@@ -80,6 +84,7 @@ img {
   #header #logo h1 {
     font-size: 26px;
   }
+
   #header #logo img {
     max-height: 40px;
   }
@@ -91,4 +96,3 @@ img {
   height: 72px;
   transition: all 0.5s;
 }
-
