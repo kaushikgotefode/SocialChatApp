@@ -19,7 +19,7 @@ class Profiles extends Component {
     } else {
       if (profiles && profiles.length > 0) {
         profileListContent = (
-          <div className="container">
+          <div className="container p-0">
             <div className="row">
               <div className="col-xs-12 col-sm-6 col-md-6">
                 <div className="well well-sm">

@@ -11,6 +11,7 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
+    const skills = profile ? (typeof profile.skills === 'object' ? profile.skills : profile.skills.split(',')):[];
     let dashboardContent = "";
     if (loading) {
       dashboardContent = <Spinner />;
@@ -18,12 +19,13 @@ class Dashboard extends Component {
       if (profile && Object.keys(profile).length > 0) {
         dashboardContent = <div>
           <Link className="btn btn-secondary" to="/profiles">List of Developers</Link>
+          <Link className="btn btn-primary" to="/edit-profile">Edit Your Profile</Link>
           <center>
             <img src={user.avatar} alt={user.name} name="aboutme" style={{width:'140px',height:'140px',border:'0px', borderRadius:'50%'}} />
             <h3 className="media-heading">{user.name} <small>{profile.location}</small></h3>
             <span><strong className="mr-2">Skills: </strong></span>
             {
-              profile.skills.map((skill,id) => {
+              skills.map((skill,id) => {
                 return <span className="text-capitalize badge badge-info px-1 mr-2" key={id}>{skill}</span>
               })
             }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./../../App.css";
 
@@ -18,6 +18,12 @@ class Navbar extends Component {
     const guestLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/profiles">
+            {" "}
+            Developers
+                </Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link" to="/register">
             Sign Up
           </Link>
@@ -32,6 +38,12 @@ class Navbar extends Component {
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
+          <Link className="nav-link" to="/profiles">
+            {" "}
+            Developers
+                </Link>
+        </li>
+        <li className="nav-item">
           <span className="nav-link" onClick={this.onLogoutClick.bind(this)}>
             <img
               src={user.avatar}
@@ -45,36 +57,36 @@ class Navbar extends Component {
       </ul>
     );
     return (
-      <nav
-        className="navbar navbar-expand-sm navbar-dark bg-dark"
-        style={{ height: "56px" }}
-      >
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            DevConnector
+      <Fragment>
+        <nav
+          className="navbar navbar-expand-sm navbar-dark bg-dark"
+          style={{ minHeight: "56px" }}
+        >
+          <div className="" style={{flex:'auto'}}>
+            <Link className="navbar-brand" to="/">
+              DevConnector
           </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#mobile-nav"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-
-          <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item">
-                <Link className="nav-link" to="/profiles">
-                  {" "}
-                  Developers
-                </Link>
-              </li>
-            </ul>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#mobile-nav"
+              style={{float:'right'}}
+            >
+              <span className="navbar-toggler-icon" />
+            </button>
+          </div>
+          <div className="collapse navbar-collapse">
+            {/* <ul className="navbar-nav mr-auto">
+              
+            </ul> */}
             {isAuthenticate ? authLinks : guestLinks}
           </div>
+        </nav>
+        <div className="collapse navbar-collapse mobile-view" id="mobile-nav">
+          {isAuthenticate ? authLinks : guestLinks}
         </div>
-      </nav>
+      </Fragment>
     );
   }
 }
