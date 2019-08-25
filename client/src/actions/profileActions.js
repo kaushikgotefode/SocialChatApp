@@ -77,6 +77,19 @@ export const deleteProfile = history => dispatch => {
   //   });
   // });
 };
+export const addExperience = (experience, history) => dispatch => {
+  axios
+    .post("/apis/profile/experience", experience)
+    .then(res => {
+      history.push("/dashboard");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
 
 export const setProfileLoading = () => {
   return {

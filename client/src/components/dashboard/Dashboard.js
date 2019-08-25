@@ -10,7 +10,7 @@ import Spinner from "../common/Spinner";
 import isEmpty from "./../../validations/isEmpty";
 import ProfileActions from "./ProfileActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { } from "@fortawesome/free-brands-svg-icons";
+import Experience from "./Experience";
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
@@ -37,6 +37,7 @@ class Dashboard extends Component {
               Welcome <Link to={`profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
+            <Experience experience={profile.experience} />
             <center>
               <img
                 src={user.avatar}

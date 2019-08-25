@@ -21,7 +21,7 @@ class Navbar extends Component {
           <Link className="nav-link" to="/profiles">
             {" "}
             Developers
-                </Link>
+          </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/register">
@@ -39,9 +39,13 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/profiles">
-            {" "}
             Developers
-                </Link>
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link>
         </li>
         <li className="nav-item">
           <span className="nav-link" onClick={this.onLogoutClick.bind(this)}>
@@ -62,16 +66,16 @@ class Navbar extends Component {
           className="navbar navbar-expand-sm navbar-dark bg-dark"
           style={{ minHeight: "56px" }}
         >
-          <div className="" style={{flex:'auto'}}>
+          <div className="" style={{ flex: "auto" }}>
             <Link className="navbar-brand" to="/">
               DevConnector
-          </Link>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
               data-toggle="collapse"
               data-target="#mobile-nav"
-              style={{float:'right'}}
+              style={{ float: "right" }}
             >
               <span className="navbar-toggler-icon" />
             </button>

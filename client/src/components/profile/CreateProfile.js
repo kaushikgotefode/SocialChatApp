@@ -83,35 +83,35 @@ class CreateProfile extends Component {
           <InputGroup
             name="facebook"
             placeholder="Facebook"
-            value={this.state.facebook}
+            value={this.state.social.facebook}
             icon={faFacebookF}
             onChange={e => this.onChange(e)}
           />
           <InputGroup
             name="instagram"
             placeholder="Instagram"
-            value={this.state.instagram}
+            value={this.state.social.instagram}
             icon={faInstagram}
             onChange={e => this.onChange(e)}
           />
           <InputGroup
             name="youtube"
             placeholder="Youtube"
-            value={this.state.youtube}
+            value={this.state.social.youtube}
             icon={faYoutube}
             onChange={e => this.onChange(e)}
           />
           <InputGroup
             name="twitter"
             placeholder="Twitter"
-            value={this.state.twitter}
+            value={this.state.social.twitter}
             icon={faTwitter}
             onChange={e => this.onChange(e)}
           />
           <InputGroup
             name="linkedIn"
             placeholder="linkedIn"
-            value={this.state.linkedIn}
+            value={this.state.social.linkedIn}
             icon={faLinkedin}
             onChange={e => this.onChange(e)}
           />
