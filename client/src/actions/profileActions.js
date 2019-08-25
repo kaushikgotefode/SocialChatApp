@@ -2,9 +2,12 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS, GET_ALL_PROFILES
+  GET_ERRORS,
+  GET_ALL_PROFILES,
+  SET_CURRENT_USER
 } from "./types";
 import axios from "axios";
+import setRequestToken from "./../utils/setRequestToken";
 
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
@@ -42,16 +45,12 @@ export const getProfileList = () => dispatch => {
     });
 };
 
-export const createProfile = (profile,history) => dispatch => {
+export const createProfile = (profile, history) => dispatch => {
   dispatch(setProfileLoading());
   axios
     .post("/apis/profile", profile)
     .then(res => {
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      });
-      history.push('/dashboard')
+      history.push("/dashboard");
     })
     .catch(err => {
       dispatch({
@@ -63,6 +62,20 @@ export const createProfile = (profile,history) => dispatch => {
         payload: err.response.data
       });
     });
+};
+export const deleteProfile = history => dispatch => {
+  axios.delete("/apis/profile").then(res => {
+    dispatch(clearCurrentProfile());
+    localStorage.removeItem("jwtToken");
+    setRequestToken(false);
+    dispatch({ type: SET_CURRENT_USER, payload: {} });
+  });
+  // .catch(err => {
+  //   dispatch({
+  //     type: GET_ERRORS,
+  //     payload: err.response.data
+  //   });
+  // });
 };
 
 export const setProfileLoading = () => {

@@ -25,14 +25,12 @@ class CreateProfile extends Component {
       value: "",
       skills: "",
       bio: "",
-      gitHubUserName: "",
-      social: {
-        youtube: "",
-        facebook: "",
-        twitter: "",
-        linkedIn: "",
-        instagram: "",
-      },
+      githubusername: "",
+      youtube: "",
+      facebook: "",
+      twitter: "",
+      linkedIn: "",
+      instagram: "",
       errors: {},
       statusOptions: [
         { label: "Software Engineer", value: "Software Engineer" },
@@ -63,15 +61,12 @@ class CreateProfile extends Component {
       skills: this.state.skills,
       status: this.state.status,
       bio: this.state.bio,
-      gitHubUserName: this.state.gitHubUserName,
-      social: this.state.social,
-      // social: {
-      //   youtube: this.state.youtube,
-      //   facebook: this.state.facebook,
-      //   twitter: this.state.twitter,
-      //   instagram: this.state.instagram,
-      //   linkedIn: this.state.linkedIn
-      // }
+      githubusername: this.state.githubusername,
+      youtube: this.state.youtube,
+      facebook: this.state.facebook,
+      twitter: this.state.twitter,
+      instagram: this.state.instagram,
+      linkedIn: this.state.linkedIn
     };
     this.props.createProfile(profile, this.props.history);
   }
@@ -80,46 +75,49 @@ class CreateProfile extends Component {
     this.setState({ displaySocialInputs: !this.state.displaySocialInputs });
   }
   render() {
-    const { errors } = this.state;
-    const socialInputs = (
-      <Fragment>
-        <InputGroup
-          name="facebook"
-          placeholder="Facebook"
-          value={this.state.social.facebook}
-          icon={faFacebookF}
-          onChange={e => this.onChange(e)}
-        />
-        <InputGroup
-          name="instagram"
-          placeholder="Instagram"
-          value={this.state.social.instagram}
-          icon={faInstagram}
-          onChange={e => this.onChange(e)}
-        />
-        <InputGroup
-          name="youtube"
-          placeholder="Youtube"
-          value={this.state.social.youtube}
-          icon={faYoutube}
-          onChange={e => this.onChange(e)}
-        />
-        <InputGroup
-          name="twitter"
-          placeholder="Twitter"
-          value={this.state.social.twitter}
-          icon={faTwitter}
-          onChange={e => this.onChange(e)}
-        />
-        <InputGroup
-          name="linkedIn"
-          placeholder="linkedIn"
-          value={this.state.social.linkedIn}
-          icon={faLinkedin}
-          onChange={e => this.onChange(e)}
-        />
-      </Fragment>
-    );
+    const { errors, displaySocialInputs } = this.state;
+    let socialInputs;
+    if (displaySocialInputs) {
+      socialInputs = (
+        <Fragment>
+          <InputGroup
+            name="facebook"
+            placeholder="Facebook"
+            value={this.state.facebook}
+            icon={faFacebookF}
+            onChange={e => this.onChange(e)}
+          />
+          <InputGroup
+            name="instagram"
+            placeholder="Instagram"
+            value={this.state.instagram}
+            icon={faInstagram}
+            onChange={e => this.onChange(e)}
+          />
+          <InputGroup
+            name="youtube"
+            placeholder="Youtube"
+            value={this.state.youtube}
+            icon={faYoutube}
+            onChange={e => this.onChange(e)}
+          />
+          <InputGroup
+            name="twitter"
+            placeholder="Twitter"
+            value={this.state.twitter}
+            icon={faTwitter}
+            onChange={e => this.onChange(e)}
+          />
+          <InputGroup
+            name="linkedIn"
+            placeholder="linkedIn"
+            value={this.state.linkedIn}
+            icon={faLinkedin}
+            onChange={e => this.onChange(e)}
+          />
+        </Fragment>
+      );
+    }
     return (
       <div className="create-profile py-4">
         <form className="form-horizontal" onSubmit={e => this.onSubmit(e)}>
@@ -179,10 +177,10 @@ class CreateProfile extends Component {
                   onChange={e => this.onChange(e)}
                 />
                 <TextFieldGroup
-                  name="gitHubUserName"
+                  name="githubusername"
                   placeholder="Github Username"
                   info="If you want your latest github repos and a github links, please add github username"
-                  value={this.state.gitHubUserName}
+                  value={this.state.githubusername}
                   onChange={e => this.onChange(e)}
                 />
                 <TextAreaFieldGroup
@@ -201,7 +199,7 @@ class CreateProfile extends Component {
                     Social Links
                   </button>
                 </div>
-                {this.state.displaySocialInputs ? socialInputs : ""}
+                {socialInputs}
 
                 <div className="form-group">
                   <button type="submit" className="btn btn-primary">

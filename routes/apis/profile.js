@@ -95,8 +95,8 @@ router.post(
     if (req.body.website) profileObj.website = req.body.website;
     if (req.body.location) profileObj.location = req.body.location;
     if (req.body.bio) profileObj.bio = req.body.bio;
-    if (req.body.gitHubUserName)
-      profileObj.githubUserName = req.body.githubUserName;
+    if (req.body.githubusername)
+      profileObj.githubusername = req.body.githubusername;
 
     //Skills
     if (typeof req.body.skills !== "undefined")
