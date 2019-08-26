@@ -90,6 +90,19 @@ export const addExperience = (experience, history) => dispatch => {
       });
     });
 };
+export const addEducation = (education, history) => dispatch => {
+  axios
+    .post("/apis/profile/education", education)
+    .then(res => {
+      history.push("/dashboard");
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      });
+    });
+};
 
 export const setProfileLoading = () => {
   return {

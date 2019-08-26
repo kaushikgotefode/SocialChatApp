@@ -94,11 +94,11 @@ class EditProfile extends Component {
         skills,
         bio: profile.bio,
         githubusername: profile.githubusername,
-        youtube: profile.social.youtube,
-        facebook: profile.social.facebook,
-        twitter: profile.social.twitter,
-        linkedIn: profile.social.linkedIn,
-        instagram: profile.social.instagram
+        youtube: profile.youtube,
+        facebook: profile.facebook,
+        twitter: profile.twitter,
+        linkedIn: profile.linkedIn,
+        instagram: profile.instagram
       });
     }
   }
@@ -268,7 +268,6 @@ class EditProfile extends Component {
   }
 }
 EditProfile.propTypes = {
-  editProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 

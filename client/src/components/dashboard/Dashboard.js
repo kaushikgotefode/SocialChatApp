@@ -7,10 +7,10 @@ import {
 } from "./../../actions/profileActions";
 import { PropTypes } from "prop-types";
 import Spinner from "../common/Spinner";
-import isEmpty from "./../../validations/isEmpty";
 import ProfileActions from "./ProfileActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Experience from "./Experience";
+import Education from "./Education";
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
@@ -21,11 +21,6 @@ class Dashboard extends Component {
   render() {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
-    const skills = !isEmpty(profile)
-      ? profile.skills && typeof profile.skills === "object"
-        ? profile.skills
-        : profile.skills.split(",")
-      : [];
     let dashboardContent = "";
     if (loading) {
       dashboardContent = <Spinner />;
@@ -38,44 +33,7 @@ class Dashboard extends Component {
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
-            <center>
-              <img
-                src={user.avatar}
-                alt={user.name}
-                name="aboutme"
-                style={{
-                  width: "140px",
-                  height: "140px",
-                  border: "0px",
-                  borderRadius: "50%"
-                }}
-              />
-              <h3 className="media-heading">
-                {user.name} <small>{profile.location}</small>
-              </h3>
-              <span>
-                <strong className="mr-2">Skills: </strong>
-              </span>
-              {skills.map((skill, id) => {
-                return (
-                  <span
-                    className="text-capitalize badge badge-info px-1 mr-2"
-                    key={id}
-                  >
-                    {skill}
-                  </span>
-                );
-              })}
-            </center>
-            <hr />
-            <center>
-              <p className="text-left">
-                <strong>Bio: </strong>
-                <br />
-                {profile.bio}
-              </p>
-              <br />
-            </center>
+            <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }}>
               <button
                 className="btn btn-danger"
