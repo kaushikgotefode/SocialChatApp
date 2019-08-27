@@ -87,7 +87,10 @@ class Navbar extends Component {
             {isAuthenticate ? authLinks : guestLinks}
           </div>
         </nav>
-        <div className="collapse navbar-collapse mobile-view" id="mobile-nav">
+        <div
+          className="collapse navbar-collapse mobile-view  navbar-dark"
+          id="mobile-nav"
+        >
           {isAuthenticate ? authLinks : guestLinks}
         </div>
       </Fragment>

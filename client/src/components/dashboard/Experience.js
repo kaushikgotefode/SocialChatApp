@@ -29,7 +29,7 @@ class Experience extends Component {
       );
     });
     return (
-      <div>
+      <div style={{ overflow: "auto" }}>
         <h4 className="mb-2">Experiences</h4>
         <table className="table">
           <thead>
