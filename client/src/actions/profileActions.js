@@ -59,23 +59,25 @@ export const createProfile = (profile, history) => dispatch => {
       });
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response ? err.response.data : err
       });
     });
 };
 export const deleteProfile = history => dispatch => {
-  axios.delete("/apis/profile").then(res => {
-    dispatch(clearCurrentProfile());
-    localStorage.removeItem("jwtToken");
-    setRequestToken(false);
-    dispatch({ type: SET_CURRENT_USER, payload: {} });
-  });
-  // .catch(err => {
-  //   dispatch({
-  //     type: GET_ERRORS,
-  //     payload: err.response.data
-  //   });
-  // });
+  axios
+    .delete("/apis/profile")
+    .then(res => {
+      dispatch(clearCurrentProfile());
+      localStorage.removeItem("jwtToken");
+      setRequestToken(false);
+      dispatch({ type: SET_CURRENT_USER, payload: {} });
+    })
+    .catch(err => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response ? err.response.data : err
+      });
+    });
 };
 export const addExperience = (experience, history) => dispatch => {
   axios
@@ -86,7 +88,7 @@ export const addExperience = (experience, history) => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response ? err.response.data : err
       });
     });
 };
@@ -99,7 +101,7 @@ export const addEducation = (education, history) => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_ERRORS,
-        payload: err.response.data
+        payload: err.response ? err.response.data : err
       });
     });
 };

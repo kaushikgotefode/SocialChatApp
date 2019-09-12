@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { getProfileList } from "./../../actions/profileActions";
 import { PropTypes } from "prop-types";
 import Spinner from "../common/Spinner";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import ProfileItem from "./ProfileItem";
 class Profiles extends Component {
   componentDidMount() {
     this.props.getProfileList();
@@ -19,46 +18,10 @@ class Profiles extends Component {
     } else {
       if (profiles && profiles.length > 0) {
         profileListContent = (
-          <div className="container p-0">
-            <div className="row">
-              <div className="col-xs-12 col-sm-6 col-md-6">
-                <div className="well well-sm">
-                  {profiles.map((profile, id) => {
-                    return (
-                      <div className="row" key={id}>
-                        <div className="col-sm-6 col-md-4">
-                          <img
-                            src={profile.avatar}
-                            alt={profile.name}
-                            className="img-rounded img-responsive"
-                          />
-                        </div>
-                        <div className="col-sm-6 col-md-8">
-                          <h4>{profile.handle}</h4>
-                          <small>
-                            <cite title={profile.location}>
-                              {profile.location}{" "}
-                              <i className="glyphicon glyphicon-map-marker" />
-                            </cite>
-                          </small>
-                          <p>
-                            <FontAwesomeIcon
-                              className="mr-2"
-                              icon={faEnvelope}
-                            />
-                            {profile.location}
-                            <br />
-                            <FontAwesomeIcon className="mr-2" icon={faGlobe} />
-                            <Link to={profile.website}>{profile.website}</Link>
-                            <br />
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+          <div className="">
+            {profiles.map((profile, id) => {
+              return <ProfileItem profile={profile} key={id} />;
+            })}
           </div>
         );
       } else {
@@ -74,7 +37,15 @@ class Profiles extends Component {
         );
       }
     }
-    return <div className="container py-4">{profileListContent}</div>;
+    return (
+      <div className="container py-4">
+        <div className="container p-0 profiles">
+          <div className="row">
+            <div className="col-md-12">{profileListContent}</div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
 Profiles.propTypes = {

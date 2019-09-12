@@ -30,7 +30,7 @@ class Experience extends Component {
     });
     return (
       <div style={{ overflow: "auto" }}>
-        <h4 className="mb-2">Experiences</h4>
+        <h5 className="mb-2">Experiences</h5>
         <table className="table">
           <thead>
             <tr>

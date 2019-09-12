@@ -51,7 +51,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <div className="view-container pt-5">
+          <div className="view-container">
             <Route exact path="/" component={Landing} />
             <Route exact path="/profiles" component={Profiles} />
             <Route exact path="/register" component={Register} />

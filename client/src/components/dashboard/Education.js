@@ -30,7 +30,7 @@ class Education extends Component {
     });
     return (
       <div style={{ overflow: "auto" }}>
-        <h4 className="mb-2">Educations</h4>
+        <h5 className="mb-2">Educations</h5>
         <table className="table">
           <thead>
             <tr>
