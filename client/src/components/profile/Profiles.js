@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProfileList } from "./../../actions/profileActions";
@@ -18,15 +18,15 @@ class Profiles extends Component {
     } else {
       if (profiles && profiles.length > 0) {
         profileListContent = (
-          <div className="">
+          <Fragment>
             {profiles.map((profile, id) => {
               return <ProfileItem profile={profile} key={id} />;
             })}
-          </div>
+          </Fragment>
         );
       } else {
         profileListContent = (
-          <div>
+          <div className="col-md-12">
             <p className="text-muted">
               There are no Profile created, Create your own Profile.
             </p>
@@ -38,11 +38,9 @@ class Profiles extends Component {
       }
     }
     return (
-      <div className="container py-4">
-        <div className="container p-0 profiles">
-          <div className="row">
-            <div className="col-md-12">{profileListContent}</div>
-          </div>
+      <div className="content">
+        <div className="container profiles pt-5 pb-4">
+          <div className="row">{profileListContent}</div>
         </div>
       </div>
     );

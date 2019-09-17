@@ -29,7 +29,7 @@ class CreateProfile extends Component {
       youtube: "",
       facebook: "",
       twitter: "",
-      linkedIn: "",
+      linkedin: "",
       instagram: "",
       errors: {},
       statusOptions: [
@@ -66,7 +66,7 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       twitter: this.state.twitter,
       instagram: this.state.instagram,
-      linkedIn: this.state.linkedIn
+      linkedin: this.state.linkedin
     };
     this.props.createProfile(profile, this.props.history);
   }
@@ -109,9 +109,9 @@ class CreateProfile extends Component {
             onChange={e => this.onChange(e)}
           />
           <InputGroup
-            name="linkedIn"
-            placeholder="linkedIn"
-            value={this.state.social.linkedIn}
+            name="linkedin"
+            placeholder="LinkedIn"
+            value={this.state.social.linkedin}
             icon={faLinkedin}
             onChange={e => this.onChange(e)}
           />

@@ -32,7 +32,7 @@ class EditProfile extends Component {
       youtube: "",
       facebook: "",
       twitter: "",
-      linkedIn: "",
+      linkedin: "",
       instagram: "",
       statusOptions: [
         { label: "Software Engineer", value: "Software Engineer" },
@@ -78,8 +78,8 @@ class EditProfile extends Component {
       profile.twitter = !isEmpty(profile.social.twitter)
         ? profile.social.twitter
         : "";
-      profile.linkedIn = !isEmpty(profile.social.linkedIn)
-        ? profile.social.linkedIn
+      profile.linkedin = !isEmpty(profile.social.linkedin)
+        ? profile.social.linkedin
         : "";
       profile.instagram = !isEmpty(profile.social.instagram)
         ? profile.social.instagram
@@ -97,7 +97,7 @@ class EditProfile extends Component {
         youtube: profile.youtube,
         facebook: profile.facebook,
         twitter: profile.twitter,
-        linkedIn: profile.linkedIn,
+        linkedin: profile.linkedin,
         instagram: profile.instagram
       });
     }
@@ -122,7 +122,7 @@ class EditProfile extends Component {
       facebook: this.state.facebook,
       twitter: this.state.twitter,
       instagram: this.state.instagram,
-      linkedIn: this.state.linkedIn
+      linkedin: this.state.linkedin
     };
     this.props.createProfile(profile, this.props.history);
   }
@@ -163,9 +163,9 @@ class EditProfile extends Component {
           onChange={e => this.onChange(e)}
         />
         <InputGroup
-          name="linkedIn"
-          placeholder="linkedIn"
-          value={this.state.linkedIn}
+          name="linkedin"
+          placeholder="LinkedIn"
+          value={this.state.linkedin}
           icon={faLinkedin}
           onChange={e => this.onChange(e)}
         />

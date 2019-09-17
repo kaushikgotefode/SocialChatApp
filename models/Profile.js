@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+var mongoosePaginate = require("mongoose-paginate");
 const Schema = mongoose.Schema;
 
-const profileSchema = new Schema({
+const ProfileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "users"
@@ -73,7 +74,7 @@ const profileSchema = new Schema({
         type: String,
         required: true
       },
-      fieldOfStudy: {
+      fieldofstudy: {
         type: String,
         required: true
       },
@@ -97,18 +98,24 @@ const profileSchema = new Schema({
     youtube: {
       type: String
     },
-    facebook: {
-      type: String
-    },
     twitter: {
       type: String
     },
-    linkedIn: {
+    facebook: {
+      type: String
+    },
+    linkedin: {
       type: String
     },
     instagram: {
       type: String
     }
+  },
+  date: {
+    type: Date,
+    default: Date.now
   }
 });
-module.exports = Profile = mongoose.model("profiles", profileSchema);
+
+ProfileSchema.plugin(mongoosePaginate);
+module.exports = Profile = mongoose.model("profile", ProfileSchema);

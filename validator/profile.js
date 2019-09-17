@@ -30,9 +30,9 @@ module.exports = validateProfileInputs = data => {
       errors.twitter = "Invalid Url";
     }
   }
-  if (!isEmpty(data.linkedIn)) {
-    if (!Validator.isURL(data.linkedIn)) {
-      errors.linkedIn = "Invalid Url";
+  if (!isEmpty(data.linkedin)) {
+    if (!Validator.isURL(data.linkedin)) {
+      errors.linkedin = "Invalid Url";
     }
   }
   if (!isEmpty(data.facebook)) {

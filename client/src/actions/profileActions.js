@@ -27,10 +27,11 @@ export const getCurrentProfile = () => dispatch => {
     });
 };
 
-export const getProfileList = () => dispatch => {
+export const getProfileList = (page, size) => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get("/apis/profile/all")
+    .get("/apis/profile/all", { params: { page, size } })
+    // .get("/apis/profile/all")
     .then(res => {
       dispatch({
         type: GET_ALL_PROFILES,

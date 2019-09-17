@@ -47,13 +47,23 @@ router.get("/handle/:handle", (req, res) => {
 // @access public
 router.get("/all", (req, res) => {
   const errors = {};
-  Profile.find().then(profiles => {
-    if (!profiles) {
-      errors.noProfile = "There are no profiles.";
-      res.status(404).json(errors);
-    }
-    res.json(profiles);
-  });
+  var page = parseInt(req.query.page) || 1;
+  var size = parseInt(req.query.size) || 10;
+  const skip = size * (page - 1);
+
+  Profile.find()
+    .populate("user", ["name", "email", "avatar"])
+    .limit(size)
+    .skip(skip)
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofile = "There are no profiles";
+        return res.status(404).json(errors);
+      }
+
+      res.json(profiles);
+    })
+    .catch(err => res.status(404).json({ profile: "There are no profiles" }));
 });
 
 // @route  'apis/profile'
@@ -99,12 +109,13 @@ router.post(
       profileObj.githubusername = req.body.githubusername;
 
     //Skills
-    if (typeof req.body.skills !== "undefined")
+    if (typeof req.body.skills !== "undefined") {
       profileObj.skills = req.body.skills.split(",").map(skill => skill.trim());
+    }
     //Social
     profileObj.social = {};
     if (req.body.youtube) profileObj.social.youtube = req.body.youtube;
-    if (req.body.linkedIn) profileObj.social.linkedIn = req.body.linkedIn;
+    if (req.body.linkedin) profileObj.social.linkedin = req.body.linkedin;
     if (req.body.twitter) profileObj.social.twitter = req.body.twitter;
     if (req.body.facebook) profileObj.social.facebook = req.body.facebook;
     if (req.body.instagram) profileObj.social.instagram = req.body.instagram;
