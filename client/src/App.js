@@ -20,6 +20,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import ProfileView from "./components/dashboard/ProfileView";
 import CreateProfile from "./components/profile/CreateProfile";
 import Profiles from "./components/profile/Profiles";
 import EditProfile from "./components/profile/EditProfile";
@@ -54,6 +55,7 @@ function App() {
           <div className="view-container">
             <Route exact path="/" component={Landing} />
             <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={ProfileView} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
             <Switch>
