@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import avatar from "./../../img/avatar.jpg";
+import SocialButton  from './../common/SocialButton';
 import {
   faFacebookF,
   faInstagram,
@@ -23,7 +22,6 @@ class ProfileItem extends Component {
                   src={profile.user.avatar || avatar}
                   alt={profile.user.name}
                   className="rounded-circle img-thumbnail"
-                  alt="profile-image"
                 />
               </Link>
             </div>
@@ -44,106 +42,15 @@ class ProfileItem extends Component {
               </p>
             </div>
             <ul className="social-links list-inline">
-              <li className="list-inline-item">
-                <a
-                  title=""
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  className="tooltips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={profile.social && "https://" + profile.social.facebook}
-                  data-original-title="Facebook"
-                >
-                  <FontAwesomeIcon icon={faFacebookF} />
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  title=""
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  className="tooltips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={profile.social && "https://" + profile.social.instagram}
-                  data-original-title="Instagram"
-                >
-                  <FontAwesomeIcon icon={faInstagram} />
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  title=""
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  className="tooltips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={profile.social && "https://" + profile.social.twitter}
-                  data-original-title="Twitter"
-                >
-                  <FontAwesomeIcon icon={faTwitter} />
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  title=""
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  className="tooltips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={profile.social && "https://" + profile.social.linkedin}
-                  data-original-title="Linked In"
-                >
-                  <FontAwesomeIcon icon={faLinkedin} />
-                </a>
-              </li>
-              <li className="list-inline-item">
-                <a
-                  title=""
-                  data-placement="top"
-                  data-toggle="tooltip"
-                  className="tooltips"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={profile.social && "https://" + profile.social.youtube}
-                  data-original-title="Youtube"
-                >
-                  <FontAwesomeIcon icon={faYoutube} />
-                </a>
-              </li>
+              <SocialButton link={profile.social && profile.social.facebook} icon={faFacebookF} target={'_blank'} title={'Facebook'}></SocialButton>
+              <SocialButton link={profile.social && profile.social.instagram} icon={faInstagram} target={'_blank'} title={'Instagram'}></SocialButton>
+              <SocialButton link={profile.social && profile.social.twitter} icon={faTwitter} target={'_blank'} title={'Twitter'}></SocialButton>
+              <SocialButton link={profile.social && profile.social.linkedin} icon={faLinkedin} target={'_blank'} title={'LinkedIn'}></SocialButton>
+              <SocialButton link={profile.social && profile.social.youtube} icon={faYoutube} target={'_blank'} title={'Youtube'}></SocialButton>
             </ul>
           </div>
         </div>
       </div>
-      // <div className="row">
-      //   <div className="col-sm-6 col-md-4">
-      //     <img
-      //       src={profile.user.avatar}
-      //       alt={profile.user.name}
-      //       className="img-rounded img-responsive"
-      //     />
-      //   </div>
-      //   <div className="col-sm-6 col-md-8">
-      //     <h4>{profile.user.name}</h4>
-      //     <small>
-      //       <cite title={profile.location}>
-      //         {profile.location}{" "}
-      //         <i className="glyphicon glyphicon-map-marker" />
-      //       </cite>
-      //     </small>
-      //     <p>
-      //       <FontAwesomeIcon className="mr-2" icon={faEnvelope} />
-      //       {profile.location}
-      //       <br />
-      //       <FontAwesomeIcon className="mr-2" icon={faGlobe} />
-      //       <a href={profile.website}>{profile.website}</a>
-      //       <br />
-      //     </p>
-      //   </div>
-      // </div>
     );
   }
 }
