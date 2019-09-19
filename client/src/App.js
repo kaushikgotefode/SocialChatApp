@@ -26,6 +26,7 @@ import Profiles from "./components/profile/Profiles";
 import EditProfile from "./components/profile/EditProfile";
 import AddExperience from "./components/profile/AddExperience";
 import AddEducation from "./components/profile/AddEducation";
+import Posts from "./components/post/Posts";
 function App() {
   // Check for token
   if (localStorage.jwtToken) {
@@ -60,6 +61,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/feed" component={Posts} />
               <PrivateRoute
                 exact
                 path="/create-profile"

@@ -28,9 +28,6 @@ class AddExperience extends Component {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
-    // if (nextProps.profile) {
-    //   this.setState({ profile: nextProps.profile });
-    // }
   }
   onSubmit(e) {
     e.preventDefault();
