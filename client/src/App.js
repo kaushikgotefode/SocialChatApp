@@ -1,6 +1,6 @@
 import "./App.scss";
 import "./../node_modules/jquery/dist/jquery";
-import "./../node_modules/popper.js/dist/popper";
+// import "./../node_modules/popper.js/dist/popper";
 import "./../node_modules/bootstrap/dist/js/bootstrap";
 
 import React from "react";
@@ -27,6 +27,7 @@ import EditProfile from "./components/profile/EditProfile";
 import AddExperience from "./components/profile/AddExperience";
 import AddEducation from "./components/profile/AddEducation";
 import Posts from "./components/post/Posts";
+import ViewPost from "./components/post/ViewPost";
 function App() {
   // Check for token
   if (localStorage.jwtToken) {
@@ -62,6 +63,7 @@ function App() {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/feed" component={Posts} />
+              <PrivateRoute exact path="/view-post" component={ViewPost} />
               <PrivateRoute
                 exact
                 path="/create-profile"

@@ -94,32 +94,10 @@ router.post(
           if (post.likes.filter(item => item.user.toString()).length > 0) {
             return res
               .status(401)
-              .json({ noLike: "You have not like this post" });
+              .json({ noLike: "You already liked this post" });
           }
           post.likes.unshift({ user: req.params.id });
           post.save().then(post => res.json(post));
-        });
-      })
-      .catch(err => res.status(404).json({ noPosts: "No post found" }));
-  }
-);
-
-// @route  DELETE 'apis/posts:id'
-// @desc   posts routes
-// @access private
-router.delete(
-  "/:id",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Profile.findOne({ user: req.user.id })
-      .then(profile => {
-        Post.findById(req.params.id).then(post => {
-          if (post.user.toString() !== req.user.id) {
-            return res.status(401).json({ notAuthorize: "User not authorize" });
-          }
-          post.remove().then(() => {
-            res.json({ success: true });
-          });
         });
       })
       .catch(err => res.status(404).json({ noPosts: "No post found" }));
@@ -135,7 +113,7 @@ router.post(
   (req, res) => {
     Profile.findOne({ user: req.user.id })
       .then(profile => {
-        Post.findById(eq.params.id).then(post => {
+        Post.findById(req.params.id).then(post => {
           if (post.likes.filter(item => item.user.toString()).length === 0) {
             return res
               .status(401)

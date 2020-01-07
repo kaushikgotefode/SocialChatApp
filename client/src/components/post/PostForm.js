@@ -33,33 +33,18 @@ class PostForm extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <div className="feed pt-5 b-1">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <form
-                className="form-horizontal"
-                onSubmit={e => this.onSubmit(e)}
-              >
-                <div className="form-group">
-                  <TextAreaFieldGroup
-                    placeholder="Create a Post"
-                    name="text"
-                    value={this.state.text}
-                    error={errors.text}
-                    onChange={e => this.onChange(e)}
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-info mt-4"
-                    value="Post"
-                  />
-                </div>
-              </form>
-            </div>
-          </div>
+      <form className="form-horizontal" onSubmit={e => this.onSubmit(e)}>
+        <div className="form-group">
+          <TextAreaFieldGroup
+            placeholder="Create a Post"
+            name="text"
+            value={this.state.text}
+            error={errors.text}
+            onChange={e => this.onChange(e)}
+          />
+          <input type="submit" className="btn btn-info" value="Post" />
         </div>
-      </div>
+      </form>
     );
   }
 }
