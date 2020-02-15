@@ -9,7 +9,9 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run server\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "client-build":"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "start-local": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Kaushik Gotefode",
   "license": "MIT",
@@ -23,6 +25,7 @@
     "concurrently": "^4.1.1",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
+    "http-proxy-middleware": "^0.20.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0-beta2",
     "mongoose": "^5.6.6",
@@ -30,6 +33,7 @@
     "node-sass": "^4.12.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "yarn": "^1.21.1"
   }
 }

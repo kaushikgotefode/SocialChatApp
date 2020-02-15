@@ -27,7 +27,7 @@ class ProfileItem extends Component {
             </div>
             <div className="">
               <h4>{profile.user.name}</h4>
-              <p className="text-muted">
+              <div className="text-muted">
                 <div> {profile.user.email}</div>
                 <div>
                   <a
@@ -39,7 +39,7 @@ class ProfileItem extends Component {
                     {profile.website}
                   </a>
                 </div>
-              </p>
+              </div>
             </div>
             <ul className="social-links list-inline">
               <SocialButton
