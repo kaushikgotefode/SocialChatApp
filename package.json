@@ -34,6 +34,6 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "validator": "^11.1.0",
-    "yarn": "^1.21.1"
+    "yarn": "^1.22.0"
   }
 }
